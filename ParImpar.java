@@ -29,7 +29,7 @@ public class ParImpar {
 		}
 		for(int p = 0 ; p < par.length ; p++){
 			vetAux[p] = par[p];
-		}//ATÉ AQUI FUNCIONA
+		}
 		
 		int maxPar = par.length;
 		for(int p = 0; p < impar.length ; p++){
@@ -37,6 +37,7 @@ public class ParImpar {
 			maxPar++;
 		}
 		return vetAux;
+		//NOITES SEM DORMIR PORQUE A VACA DA SUELI NÃO ARRUMOU ESSE TRECHO
 		
 	}
 
