@@ -36,9 +36,7 @@ public class ParImpar {
 			vetAux[maxPar] = impar[p];
 			maxPar++;
 		}
-		return vetAux;
-		//NOITES SEM DORMIR PORQUE A VACA DA SUELI NÃO ARRUMOU ESSE TRECHO
-		
+		return vetAux;	
 	}
 
 	
