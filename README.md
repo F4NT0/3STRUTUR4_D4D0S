@@ -5,5 +5,6 @@
 	* **Pedro Vieira (phcom)**
 	* **Marcius Moraes (MarciusMoraes)**
 ```diff
-+ESTA É A BRANCH MASTER, SOMENTE O ADMINISTRADOR PODE FAZER MERGE
++ESTA É A BRANCH DEV
+-MERGE SOMENTE SE TODOS CONFIRMAREM
 ```
