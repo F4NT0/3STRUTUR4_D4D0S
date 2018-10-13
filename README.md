@@ -4,7 +4,6 @@
 	* **Gabriel Fanto (F4NT0)**
 	* **Pedro Vieira (phcom)**
 	* **Marcius Moraes (MarciusMoraes)**
-<<<<<<< HEAD
 
 * Listas de Branchs do Repositório
 	* **Master** = _Branch final_
@@ -35,9 +34,3 @@ git push origin nomeBranch | envia as alterações para a branch remota nomeBran
 		* ex: branch origem: pedro / branch nova criada a partir da origem: pedro_1
 	* A merge em dev e em master devem ser feitas em equipe, evitando erros
 
-=======
-```diff
-+ESTA É A BRANCH DEV
--MERGE SOMENTE SE TODOS CONFIRMAREM
-```
->>>>>>> 3559aedcaee881dfb418b232a71f5c7366f304e3
