@@ -33,4 +33,3 @@ git push origin nomeBranch | envia as alterações para a branch remota nomeBran
 	* Quando desejar criar uma nova branch, crie de sua branch e coloque o nome da branch antiga e um numero ordenado
 		* ex: branch origem: pedro / branch nova criada a partir da origem: pedro_1
 	* A merge em dev e em master devem ser feitas em equipe, evitando erros
-
