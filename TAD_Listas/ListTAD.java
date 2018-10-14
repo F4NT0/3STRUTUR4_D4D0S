@@ -2,20 +2,20 @@
  * Implementação da Interface do Tipo Abstrato de dados de Lista
  */
 public interface ListTAD<E>{
-    public void add(E e);
-    public void add(int index,E element);
-    public void clear();
-    public boolean contains(E e);
-    public E get(int index);
-    public int indexOf(E e);
-    public boolean isEmpty();
-    public boolean remove(E e);
-    public E remove(int index);
-    public int size();
-    public E set(int index,E element);
-    public void addFirst(E e);
-    public E getFirst();
-    public E getLast();
-    public boolean removeFirst();
-    public boolean removeLast();
+    public void adicionar(E e);
+    public void adicionar(int index,E elemento);
+    public void limpar();
+    public boolean contem(E e);
+    public E pegar(int index);
+    public int indexDe(E e);
+    public boolean estaVazio();
+    public boolean remover(E e);
+    public E remover(int index);
+    public int tamanho();
+    public E definir(int index,E elemento);
+    public void addInicio(E e);
+    public E pegarInicio();
+    public E pegarFim();
+    public boolean removerInicio();
+    public boolean removerFim();
 }
