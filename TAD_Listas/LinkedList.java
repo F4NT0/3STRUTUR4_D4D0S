@@ -45,26 +45,38 @@ public class LinkedList<T> {//implements ListTAD{
         if(primeiro == null){  //se a referencia do primeiro nodo for null
             primeiro = novo; //define o primeiro como o novo
         }else{ // se o primeiro for diferente de null
-            ultimo.definirProximo(novo); // define o proximo nodo com o novo nodo
+            //O proximo nodo depois do ultimo será o novo Nodo
+            ultimo.definirProximo(novo); 
         }
         ultimo = novo; //ultimo nodo se torna o novo
         totalElementos++; //sobe o total de elementos do nodo
     }
     //public void adicionar(int index,T elemento){}
 
+    /**
+     * Método para zerar a Lista 
+     */
     public void limpar(){
         primeiro = null;
         ultimo = null;
         totalElementos = 0;
     }
 
+
+    /**
+     * Método para verificar se o elemento existe na Lista Encadeada
+     * @param e
+     * @return
+     */
     public boolean contem(T e){
-        Nodo<T> auxiliar;
-        auxiliar = primeiro;
-        while(auxiliar != null){
+        Nodo auxiliar; //criado um nodo auxiliar
+        auxiliar = primeiro; //definimos o auxiliar como o primeiro
+        while(auxiliar != null){//enquanto o auxiliar não for nulo
+            //verifica se o elemento é igual ao elemento de entrada
             if(auxiliar.pegarElemento().equals(e)){
                 return true;
             }
+            //pega o proximo Nodo depois de verificado
             auxiliar = auxiliar.pegarProximo();
         }
         return false;
@@ -103,12 +115,20 @@ public class LinkedList<T> {//implements ListTAD{
     }
 
     public boolean remover(T e){
+        //criado um nodo auxiliar e um anterior
         Nodo anterior,auxiliar;
+        //se o primeiro for nulo, retorna false
         if(primeiro == null){return false;}
+        //faz uma verificação para ver se o primeiro Nodo
+        //possui o mesmo elemento do parâmetro
         if(primeiro.pegarElemento().equals(e)){
+            //se o ultimo Nodo for igual ao primeiro
+            //O ultimo será definido null
             if(ultimo == primeiro){ultimo = null;}
+            //se não forem iguais
+            //primeiro irá se tornar o proximo
             primeiro = primeiro.pegarProximo();
-            totalElementos--;
+            totalElementos--; //diminui o total de elementos
             return true;
         }
         anterior = primeiro;
