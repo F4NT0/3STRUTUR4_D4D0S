@@ -31,11 +31,20 @@ public class App{
         listaEncadeada.adicionar(3);
         System.out.println("Existe o Elemento 3 na lista?: " + listaEncadeada.contem(3));
  
-        //testano o método estaVazio()
+        //testando o método estaVazio()
         System.out.println("Teste do estaVazio()");
         System.out.println("Lista vazia?: " + listaEncadeada.estaVazio());
         
-        
+        //testando o método remover(T e)
+        System.out.println("Teste do remover(T e)");
+        System.out.println("Tamanho: " + listaEncadeada.tamanho());
+        System.out.println("Removido o elemento do Nodo 1?: " + listaEncadeada.remover(1));
+        System.out.println("Tamanho: " + listaEncadeada.tamanho());
+
+        //testando o método tamanho()
+        System.out.println("Teste do tamanho()");
+        System.out.println("Tamanho: " + listaEncadeada.tamanho());
+
 
 
     }

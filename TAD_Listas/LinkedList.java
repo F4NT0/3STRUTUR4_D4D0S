@@ -131,16 +131,24 @@ public class LinkedList<T> {//implements ListTAD{
             totalElementos--; //diminui o total de elementos
             return true;
         }
-        anterior = primeiro;
+        //se não for o mesmo elemento, devemos andar pelos Nodos
+        anterior = primeiro; //anterior se torna o primeiro
+        //auxiliar se torna o proximo
         auxiliar = primeiro.pegarProximo();
-        while(auxiliar != null){
+
+        while(auxiliar != null){//enquanto o auxiliar for diferente de null
+           //Verifica se o elemento do auxiliar é igual ao elemento do parametro
             if(auxiliar.pegarElemento().equals(e)){
+                //se o auxiliar for igual ao ultimo, o ultimo se torna anterior
                 if(auxiliar == ultimo){ultimo = anterior;}
+                //sera definido o proximo do anterior, pegando o proximo do auxiliar
                 anterior.definirProximo(auxiliar.pegarProximo());
+                //diminui o tamanho
                 totalElementos--;
                 return true;
             }
             else{
+                //se não for igual, ele pega o proximo Nodo
                 anterior = auxiliar;
                 auxiliar = auxiliar.pegarProximo();
             }
