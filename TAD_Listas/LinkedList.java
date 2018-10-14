@@ -3,25 +3,27 @@
  * utiliza os métodos da interface TAD
  * possui uma classe interna de Nodos
  */
-public class LinkedList implements ListTAD{
+public class LinkedList<T> {//implements ListTAD{
     //Variáveis
     private Nodo primeiro,ultimo;
+    //primeiro é o HEAD
+    //ultimo é o TAIL
     private int totalElementos;
 
     //Classe Interna Nodo
     public class Nodo{
-        private E elemento;
+        private T elemento;
         private Nodo proximo;
         //Método construtor
-        public Nodo(E e){
+        public Nodo(T e){
             elemento = e;
             proximo = null;
         }
         //Métodos da Classe Nodo
-        public void definirElemento(E e){elemento = e;}
+        public void definirElemento(T e){elemento = e;}
         public void definirProximo(Nodo n){proximo = n;}
-        public E pegarElemento(){return elemento;}
-        public Nodo pegarProximo(){return proximo;}
+        public T pegarElemento(){return elemento;}
+        public Nodo pegarProximo(){return proximo;}    
     }
 
     //Método construtor da LinkedList
@@ -32,18 +34,23 @@ public class LinkedList implements ListTAD{
     }
 
     //Métodos da LinkedList implementados da interface TAD
-    public void adicionar(E e){
-        Nodo novo = new Nodo(e);
-        if(ultimo != null){
-            ultimo.definirProximo(novo);
+
+    /**
+     * Método de inserção de um elemento na lista
+     * elemento sempre inserido no fim
+     * @param e
+     */
+    public void adicionar(T e){
+        Nodo novo = new Nodo(e); //criado um novo nodo com o elemento
+        if(primeiro == null){  //se a referencia do primeiro nodo for null
+            primeiro = novo; //define o primeiro como o novo
+        }else{ // se o primeiro for diferente de null
+            ultimo.definirProximo(novo); // define o proximo nodo com o novo nodo
         }
-        else{
-            primeiro = novo;
-        }
-        ultimo = novo;
-        totalElementos++;
+        ultimo = novo; //ultimo nodo se torna o novo
+        totalElementos++; //sobe o total de elementos do nodo
     }
-    //public void adicionar(int index,E elemento){}
+    //public void adicionar(int index,T elemento){}
 
     public void limpar(){
         primeiro = null;
@@ -51,8 +58,8 @@ public class LinkedList implements ListTAD{
         totalElementos = 0;
     }
 
-    public boolean contem(E e){
-        Nodo<E> auxiliar;
+    public boolean contem(T e){
+        Nodo<T> auxiliar;
         auxiliar = primeiro;
         while(auxiliar != null){
             if(auxiliar.pegarElemento().equals(e)){
@@ -63,9 +70,30 @@ public class LinkedList implements ListTAD{
         return false;
     }
 
-    //public E pegar(int index){}
+    /**
+     * Para pegar um Nodo especifico, devemos 
+     * criar um contador que irá passar por todos os nodos
+     * até chegar no nodo que fica na posição do index
+     * @param index
+     */
+    public T pegar(int index){
+        //verificação se o index está dentro do tamanho total
+        if((index < 0) || (index >= totalElementos)){
+            throw new IndexOutOfBoundsException();
+        }
+        Nodo auxiliar = primeiro; //colocamos o primeiro nodo no auxiliar
+        int contador = 0; //criamos um contador zerado
+        while(contador < index){ //enquanto o contador for menor que o index
+            //o auxiliar vai passando pelos nodos até chegar no nodo do index
+            auxiliar = auxiliar.pegarProximo();
+            contador++;
+        }
+        //quando chegar no index, retorna o elemento do Nodo
+        return auxiliar.pegarElemento();
 
-    //public int indexDe(E e){}
+    }
+
+    //public int indexDe(T e){}
 
     public boolean estaVazio(){
         if(primeiro == null){
@@ -74,7 +102,7 @@ public class LinkedList implements ListTAD{
         else{return false;}
     }
 
-    public boolean remover(E e){
+    public boolean remover(T e){
         Nodo anterior,auxiliar;
         if(primeiro == null){return false;}
         if(primeiro.pegarElemento().equals(e)){
@@ -99,17 +127,15 @@ public class LinkedList implements ListTAD{
         }
         return false;
     }
-    //public E remover(int index){}
+    //public T remover(int index){}
     public int tamanho(){
         return totalElementos;
     }
-    //public E definir(int index, E elemento){}
-    //public void addInicio(E e){}
-    //public E pegarInicio(){}
-    //public E pegarFim(){}
+    //public T definir(int index, T elemento){}
+    //public void addInicio(T e){}
+    //public T pegarInicio(){}
+    //public T pegarFim(){}
     //public boolean removerInicio(){}
     //public boolean removerFim(){}
-
-
 
 }
