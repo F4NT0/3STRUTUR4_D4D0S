@@ -229,13 +229,171 @@ public class LinkedList<T> {//implements ListTAD{
         //não importando qual operação, o total da lista aumenta
         totalElementos++;
     }
-    //public T remover(int index){}
-    //public int indexDe(T e){}
-    //public T definir(int index, T elemento){}
-    //public void addInicio(T e){}
-    //public T pegarInicio(){}
-    //public T pegarFim(){}
-    //public boolean removerInicio(){}
-    //public boolean removerFim(){}
+    /**
+     * Método para remover um elemento tendo index como parametro
+     * @param index
+     * @return
+     */
+    public T remover(int index){
+        //primeiramente verificamos se o index esta dentro do tamanho
+        if((index < 0) || (index >= totalElementos)){
+            throw new IndexOutOfBoundsException();
+        }
+        //criamos um Nodo auxiliar para andar pela lista
+        Nodo auxiliar = primeiro;
+        //se o index for zero, iremos deletar o primeiro Nodo
+        if(index == 0 ){
+            //se somente tiver um Nodo na lista, o ultimo se torna null
+            if(ultimo == primeiro){
+                ultimo = null;
+            }
+            //o primeiro Nodo se torna o proximo Nodo, apagando a referencia do Nodo antigo
+            primeiro = primeiro.pegarProximo();
+            totalElementos--;
+            return auxiliar.pegarElemento();
+        }
+        //se o index não for zero, iremos andar pela lista com um contador
+        int contador = 0;
+        while(contador < index - 1){
+            auxiliar = auxiliar.pegarProximo();
+            contador++;
+        }
+        //Se armazena o valor do elemento do Nodo em outra variavel
+        //para que o elemento não seja perdido na hora de deletar
+        T elemento = auxiliar.pegarElemento();
+        //quando chegar no Nodo desejado,deve ser testado se ele é o ultimo
+        if(ultimo == auxiliar.pegarProximo()){
+          //assim retiramos a referencia do ultimo elemento e colocamos o auxiliar no lugar
+            ultimo = auxiliar;
+        }
+        //definimos agora que o proximo Nodo depois do nodo no auxiliar é o proximo do proximo
+        //com isso retiramos a referencia do proximo do Nodo auxiliar e defimos o proximo dele como proximo
+        auxiliar.proximo = auxiliar.proximo.proximo; 
+        //diminuimos o tamanho
+        totalElementos--;
+        //retornamos o elemento armazenado do Nodo que foi removido
+        return elemento;
+    }
+
+    /**
+     * Método para descobrir o index de um elemento especifico na lista
+     * @param e
+     * @return
+     */
+    public int indexDe(T e){
+        //criamos uma variavel para armazenar o index
+        int index = 0;
+        //criamos um nodo auxiliar para andar pela lista
+        Nodo auxiliar = primeiro;
+        //vamos andar pela lista enquanto o auxiliar não seja null
+        while(auxiliar != null){
+            //temos que verificar se o elemento de parametro é igual ao elemento do auxiliar
+            if(auxiliar.elemento.equals(e)){
+                //se forem iguais,retorna o index
+                return index;
+            }
+            //se o nodo do auxiliar que passou não tiver o elemento, iremos para o proximo
+            auxiliar = auxiliar.pegarProximo();
+            index++;
+        }
+        //se não tiver o elemento na lista, irá retornar -1
+        return -1;
+    }
+
+    /**
+     * Método para redefinir um elemento dentro de um Nodo
+     * @param index
+     * @param elemento
+     * @return
+     * @throws IndexOutOfBoundsException 
+     */
+    public T definir(int index, T elemento){
+        //primeiramente verificamos se o index esta dentro do tamanho da lista
+        if((index < 0) || (index >= totalElementos)){
+            throw new IndexOutOfBoundsException();
+        }
+        //criamos um Nodo auxiliar para andar pela Lista
+        Nodo auxiliar = primeiro;
+        //andamos pela lista até o index
+        for(int i = 0 ; i < index ; i++){
+            auxiliar = auxiliar.pegarProximo();
+        }
+        //chegando no Nodo do index, armazenamos o elemento existente nele em uma variavel
+        T elementoAntigo = auxiliar.pegarElemento();
+        //definimos o elemento que irá ficar no Nodo
+        auxiliar.definirElemento(elemento);
+        //retornamos o antigo elemento que estava no Nodo
+        return elementoAntigo;
+    }
+
+    /**
+     * Método para somente adicionar no inicio do Nodo
+     */
+    public void addInicio(T e){
+        //criaremos um Nodo novo para colocar o elemento
+        Nodo novo = new Nodo(e);
+        //tornamos o primeiro Nodo como o proximo do novo Nodo
+        novo.definirProximo(primeiro);
+        //depois definimos o primeiro Nodo como o novo
+        primeiro = novo;
+        //fazemos uma verificação se o ultimo nodo é null
+        if(ultimo == null){
+            ultimo = novo;
+        }
+        totalElementos++;
+    }
+    
+    /**
+     * Método para pegar o elemento no primeiro Nodo
+     */
+    public T pegarInicio(){
+        return primeiro.pegarElemento();
+    }
+
+    /**
+     * Método para pegar o elemento no ultimo Nodo
+     */
+    public T pegarFim(){
+        return ultimo.pegarElemento();
+    }
+    
+    /**
+     * Método para remover o primeiro elemento do Nodo
+     */
+    public boolean removerInicio(){
+        //verificamos se o primeiro é igual ao ultimo
+        if(primeiro == ultimo){
+            //primeiro se torna null
+            primeiro = null;
+            //remove o tamanho de elementos no Nodo
+            totalElementos--;
+            //retorna true
+            return true;
+        }else{
+            //se tiverem mais elementos, o proximo elemento se torna o primeiro
+            //retira a referencia para o antigo primeiro elemento
+            primeiro = primeiro.pegarProximo();
+            totalElementos--;
+            return true;
+        }
+    }
+    public boolean removerFim(){
+        //criamos um Nodo auxiliar para andar pela lista
+        Nodo auxiliar = primeiro;
+        //verificamos se o primeiro Nodo é igual ao ultimo
+        if(primeiro == ultimo){
+            primeiro = null;
+            totalElementos--;
+            return true;
+        }
+        //se não forem iguais, iremos até o penultimo Nodo
+        for(int i = 0 ; i < totalElementos-1; i++){
+            auxiliar = auxiliar.pegarProximo();
+        }
+        //agora iremos transformar o ultimo no penultimo Nodo
+        ultimo = auxiliar;
+        totalElementos--;
+        return true;
+    }
 
 }

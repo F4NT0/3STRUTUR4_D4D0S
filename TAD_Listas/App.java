@@ -14,9 +14,9 @@ public class App{
         listaEncadeada.adicionar(3);
         System.out.println("Tamanho Final: " + listaEncadeada.tamanho());
         System.out.println("Teste do Pegar(int index)");
-        System.out.println("Elemento do Nodo 1: " + listaEncadeada.pegar(0));
-        System.out.println("Elemento do Nodo 2: " + listaEncadeada.pegar(1));
-        System.out.println("Elemento do Nodo 3: " + listaEncadeada.pegar(2));
+        for(int i = 0 ; i < listaEncadeada.tamanho();i++){
+            System.out.println("Nodo " + i + ": " + listaEncadeada.pegar(i));
+        }
 
         //testando o método limpar
         System.out.println("Teste do  limpar():");
@@ -53,20 +53,81 @@ public class App{
         listaEncadeada.adicionar(3);
         listaEncadeada.adicionar(4);
         System.out.println("Total de Elementos: " + listaEncadeada.tamanho());
-        System.out.println("Nodo 1: " + listaEncadeada.pegar(0));
-        System.out.println("Nodo 2: " + listaEncadeada.pegar(1));
-        System.out.println("Nodo 3: " + listaEncadeada.pegar(2));
-        System.out.println("Nodo 4: " + listaEncadeada.pegar(3));
+        for(int i = 0 ; i < listaEncadeada.tamanho();i++){
+            System.out.println("Nodo " + i + ": " + listaEncadeada.pegar(i));
+        }
         listaEncadeada.adicionar(2,2);
         System.out.println("Total de Elementos: " + listaEncadeada.tamanho());
-        System.out.println("Nodo 1: " + listaEncadeada.pegar(0));
-        System.out.println("Nodo 2: " + listaEncadeada.pegar(1));
-        System.out.println("Nodo 3: " + listaEncadeada.pegar(2));
-        System.out.println("Nodo 4: " + listaEncadeada.pegar(3));
-        System.out.println("Nodo 5: " + listaEncadeada.pegar(4));
+        for(int i = 0 ; i < listaEncadeada.tamanho();i++){
+            System.out.println("Nodo " + i + ": " + listaEncadeada.pegar(i));
+        }
 
+        //Teste do Método remover(index)
+        System.out.println("Teste do remover(index)");
+        System.out.println("Total de Elementos: " + listaEncadeada.tamanho());
+        System.out.println("Elemento removido do Nodo 3: " + listaEncadeada.remover(2));
+        System.out.println("Total de Elementos: " + listaEncadeada.tamanho());
 
+        //Teste do método indexDe(T e)
+        System.out.println("Teste do indexDe(e)");
+        for(int i = 0 ; i < listaEncadeada.tamanho(); i++){
+            System.out.println("Nodo " + i + ": " + listaEncadeada.pegar(i));
+        }
+        System.out.println("Index do Elemento 2: " +listaEncadeada.indexDe(2));   
+        //Teste do método definir(index,elemento)
+        System.out.println("Teste do definir(index,elemento)");
+        for(int i = 0 ; i < listaEncadeada.tamanho(); i++){
+            System.out.println("Nodo " + i + ": " + listaEncadeada.pegar(i));
+        }
+        System.out.println("Definir o Nodo 1 como 3, qual o antigo elemento?: " + listaEncadeada.definir(1,3));
+        for(int i = 0 ; i < listaEncadeada.tamanho(); i++){
+            System.out.println("Nodo " + i + ": " + listaEncadeada.pegar(i));
+        }
+        System.out.println("Colocando o Valor antigo de volta: " + listaEncadeada.definir(1,2));
+        for(int i = 0 ; i < listaEncadeada.tamanho(); i++){
+            System.out.println("Nodo " + i + ": " + listaEncadeada.pegar(i));
+        }
+        //Teste do método addInicio(e)
+        System.out.println("Teste do addInicio(e)");
 
+        listaEncadeada.limpar();
+        listaEncadeada.adicionar(2);
+        listaEncadeada.adicionar(3);
+        listaEncadeada.adicionar(4);
+        System.out.println("Tamanho da Lista: " + listaEncadeada.tamanho());
+        for(int i = 0 ; i < listaEncadeada.tamanho(); i++){
+            System.out.println("Nodo " + i + ": " + listaEncadeada.pegar(i));
+        }
+        listaEncadeada.addInicio(1);
+        System.out.println("Tamanho da lista: " + listaEncadeada.tamanho());
+        for(int i = 0 ; i < listaEncadeada.tamanho();i++){
+            System.out.println("Nodo " + i + ": " + listaEncadeada.pegar(i));
+        }
+        //Teste dos Método pegarInicio e pegarFim
+        System.out.println("Teste dos pegarInicio() e pegarFim()");
+        for(int i = 0 ; i < listaEncadeada.tamanho();i++){
+            System.out.println("Nodo " + i + ": " + listaEncadeada.pegar(i));
+        }
+        System.out.println("Primeiro Elemento: " + listaEncadeada.pegarInicio());
+        System.out.println("Ultimo Elemento: " + listaEncadeada.pegarFim());
 
+        //Teste do Método removerInicio()
+        System.out.println("Teste do removerInicio()");
+        for(int i = 0 ; i < listaEncadeada.tamanho();i++){
+            System.out.println("Nodo " + i + ": " + listaEncadeada.pegar(i));
+        }
+        System.out.println("Removeu?: " + listaEncadeada.removerInicio());
+        for(int i = 0 ; i < listaEncadeada.tamanho();i++){
+            System.out.println("Nodo " + i + ": " + listaEncadeada.pegar(i));
+        }
+        //Teste do Método removerFim()
+        System.out.println("Teste do removerFim()");
+        for(int i = 0 ; i < listaEncadeada.tamanho();i++){
+            System.out.println("Nodo " + i + ": " + listaEncadeada.pegar(i));
+        }
+        System.out.println("Removeu?: " + listaEncadeada.removerFim());
+        for(int i = 0 ; i < listaEncadeada.tamanho();i++){
+            System.out.println("Nodo " + i + ": " + listaEncadeada.pegar(i));
+        }
     }
 }
