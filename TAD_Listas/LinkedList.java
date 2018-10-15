@@ -51,7 +51,6 @@ public class LinkedList<T> {//implements ListTAD{
         ultimo = novo; //ultimo nodo se torna o novo
         totalElementos++; //sobe o total de elementos do nodo
     }
-    //public void adicionar(int index,T elemento){}
 
     /**
      * Método para zerar a Lista 
@@ -105,8 +104,9 @@ public class LinkedList<T> {//implements ListTAD{
 
     }
 
-    //public int indexDe(T e){}
-
+    /**
+     * Método para verificar se a lista esta vazia
+     */
     public boolean estaVazio(){
         if(primeiro == null){
             return true;
@@ -114,6 +114,12 @@ public class LinkedList<T> {//implements ListTAD{
         else{return false;}
     }
 
+    /**
+     * Método para remover um elemento da lista 
+     * Pesquisando pelo elemento
+     * @param e
+     * @return
+     */
     public boolean remover(T e){
         //criado um nodo auxiliar e um anterior
         Nodo anterior,auxiliar;
@@ -155,10 +161,76 @@ public class LinkedList<T> {//implements ListTAD{
         }
         return false;
     }
-    //public T remover(int index){}
+
+    /**
+     * Método para retornar o tamanho da lista
+     * @return
+     */
     public int tamanho(){
         return totalElementos;
     }
+
+
+    /**
+     * Método para adicionar um elemento pela Posição
+     * Podemos adicionar no inicio da lista
+     * Podemos adicionar no meio da lista
+     * Podemos adicionar no fim da lista
+     * @param index
+     * @param elemento
+     */
+    public void adicionar(int index,T elemento){
+        //fazer uma verificação se o index esta dentro do tamanho
+        if((index < 0) || (index >= totalElementos)){
+            throw new IndexOutOfBoundsException();
+        }
+        //Criando um Nodo novo com o elemento
+        Nodo novo = new Nodo(elemento);
+
+        //Adicionando o Nodo no Inicio da Lista
+        if(index == 0){
+            //Pegamos o Nodo do inicio da lista e o colocamos como proximo
+            novo.definirProximo(primeiro);
+            //Definimos então o novo Nodo como o Primeiro
+            primeiro = novo;
+            if(ultimo == null){
+                //Se o ultimo for nulo, dizemos então que o ultimo
+                //também é o novo Nodo
+                ultimo = novo;
+            }
+        }else{
+            //Adicionando o Nodo no Final da Lista
+            if(index == totalElementos){
+                //Se o index for o tamanho da lista
+                //definimos que o proximo do novo Nodo é o antigo ultimo
+                novo.definirProximo(ultimo);
+                //e transformamos o ultimo no novo Nodo
+                ultimo = novo;
+            }else{
+                //Adicionando o Nodo no Meio da Lista
+                //Criamos um Nodo auxiliar para andar entre os Nodos
+                Nodo auxiliar = primeiro;
+                //Criamos um for que irá fazer até index - 1
+                for(int i = 0 ; i < index - 1 ; i++){
+                    //ele vai andando pelos Nodos até chegar no Nodo do index
+                    // é index -1 porque ele faz uma interação a mais no for
+                    auxiliar = auxiliar.pegarProximo();
+                }
+                //Depois de encontrado o local do index
+                //pegamos o Nodo que ficou no auxiliar depois do for
+                //definimos que o proximo do auxiliar é o proximo do novo nodo
+                novo.definirProximo(auxiliar.pegarProximo());
+                //depois definimos que o proximo do nodo auxiliar é o novo nodo
+                auxiliar.definirProximo(novo);
+                
+                
+            }
+        } 
+        //não importando qual operação, o total da lista aumenta
+        totalElementos++;
+    }
+    //public T remover(int index){}
+    //public int indexDe(T e){}
     //public T definir(int index, T elemento){}
     //public void addInicio(T e){}
     //public T pegarInicio(){}

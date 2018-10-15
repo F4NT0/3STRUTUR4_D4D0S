@@ -45,6 +45,27 @@ public class App{
         System.out.println("Teste do tamanho()");
         System.out.println("Tamanho: " + listaEncadeada.tamanho());
 
+        //testando o método adicionar 2
+        System.out.println("Teste do adicionar(index,elemento)");
+        listaEncadeada.limpar();
+        listaEncadeada.adicionar(1);
+        listaEncadeada.adicionar(2);
+        listaEncadeada.adicionar(3);
+        listaEncadeada.adicionar(4);
+        System.out.println("Total de Elementos: " + listaEncadeada.tamanho());
+        System.out.println("Nodo 1: " + listaEncadeada.pegar(0));
+        System.out.println("Nodo 2: " + listaEncadeada.pegar(1));
+        System.out.println("Nodo 3: " + listaEncadeada.pegar(2));
+        System.out.println("Nodo 4: " + listaEncadeada.pegar(3));
+        listaEncadeada.adicionar(2,2);
+        System.out.println("Total de Elementos: " + listaEncadeada.tamanho());
+        System.out.println("Nodo 1: " + listaEncadeada.pegar(0));
+        System.out.println("Nodo 2: " + listaEncadeada.pegar(1));
+        System.out.println("Nodo 3: " + listaEncadeada.pegar(2));
+        System.out.println("Nodo 4: " + listaEncadeada.pegar(3));
+        System.out.println("Nodo 5: " + listaEncadeada.pegar(4));
+
+
 
 
     }
