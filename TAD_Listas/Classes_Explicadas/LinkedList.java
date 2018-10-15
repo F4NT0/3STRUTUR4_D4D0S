@@ -2,8 +2,10 @@
  * Implementação de uma classe de Listas Encadeadas com Nodos
  * utiliza os métodos da interface TAD
  * possui uma classe interna de Nodos
+ * Para que a interface e a Classe sejam Genéricas, as duas devem ter o
+ * tipo genérico bem definido no inicio
  */
-public class LinkedList<T> {//implements ListTAD{
+public class LinkedList<T> implements ListTAD<T>{
     //Variáveis
     private Nodo primeiro,ultimo;
     //primeiro é o HEAD
@@ -40,6 +42,7 @@ public class LinkedList<T> {//implements ListTAD{
      * elemento sempre inserido no fim
      * @param e
      */
+    @Override
     public void adicionar(T e){
         Nodo novo = new Nodo(e); //criado um novo nodo com o elemento
         if(primeiro == null){  //se a referencia do primeiro nodo for null
@@ -55,6 +58,7 @@ public class LinkedList<T> {//implements ListTAD{
     /**
      * Método para zerar a Lista 
      */
+    @Override
     public void limpar(){
         primeiro = null;
         ultimo = null;
@@ -67,6 +71,7 @@ public class LinkedList<T> {//implements ListTAD{
      * @param e
      * @return
      */
+    @Override
     public boolean contem(T e){
         Nodo auxiliar; //criado um nodo auxiliar
         auxiliar = primeiro; //definimos o auxiliar como o primeiro
@@ -87,6 +92,7 @@ public class LinkedList<T> {//implements ListTAD{
      * até chegar no nodo que fica na posição do index
      * @param index
      */
+    @Override
     public T pegar(int index){
         //verificação se o index está dentro do tamanho total
         if((index < 0) || (index >= totalElementos)){
@@ -107,6 +113,7 @@ public class LinkedList<T> {//implements ListTAD{
     /**
      * Método para verificar se a lista esta vazia
      */
+    @Override
     public boolean estaVazio(){
         if(primeiro == null){
             return true;
@@ -120,6 +127,7 @@ public class LinkedList<T> {//implements ListTAD{
      * @param e
      * @return
      */
+    @Override
     public boolean remover(T e){
         //criado um nodo auxiliar e um anterior
         Nodo anterior,auxiliar;
@@ -166,6 +174,7 @@ public class LinkedList<T> {//implements ListTAD{
      * Método para retornar o tamanho da lista
      * @return
      */
+    @Override
     public int tamanho(){
         return totalElementos;
     }
@@ -179,6 +188,7 @@ public class LinkedList<T> {//implements ListTAD{
      * @param index
      * @param elemento
      */
+    @Override
     public void adicionar(int index,T elemento){
         //fazer uma verificação se o index esta dentro do tamanho
         if((index < 0) || (index >= totalElementos)){
@@ -234,6 +244,7 @@ public class LinkedList<T> {//implements ListTAD{
      * @param index
      * @return
      */
+    @Override
     public T remover(int index){
         //primeiramente verificamos se o index esta dentro do tamanho
         if((index < 0) || (index >= totalElementos)){
@@ -280,6 +291,7 @@ public class LinkedList<T> {//implements ListTAD{
      * @param e
      * @return
      */
+    @Override
     public int indexDe(T e){
         //criamos uma variavel para armazenar o index
         int index = 0;
@@ -307,6 +319,7 @@ public class LinkedList<T> {//implements ListTAD{
      * @return
      * @throws IndexOutOfBoundsException 
      */
+    @Override
     public T definir(int index, T elemento){
         //primeiramente verificamos se o index esta dentro do tamanho da lista
         if((index < 0) || (index >= totalElementos)){
@@ -329,6 +342,7 @@ public class LinkedList<T> {//implements ListTAD{
     /**
      * Método para somente adicionar no inicio do Nodo
      */
+    @Override
     public void addInicio(T e){
         //criaremos um Nodo novo para colocar o elemento
         Nodo novo = new Nodo(e);
@@ -346,6 +360,7 @@ public class LinkedList<T> {//implements ListTAD{
     /**
      * Método para pegar o elemento no primeiro Nodo
      */
+    @Override
     public T pegarInicio(){
         return primeiro.pegarElemento();
     }
@@ -353,6 +368,7 @@ public class LinkedList<T> {//implements ListTAD{
     /**
      * Método para pegar o elemento no ultimo Nodo
      */
+    @Override
     public T pegarFim(){
         return ultimo.pegarElemento();
     }
@@ -360,6 +376,7 @@ public class LinkedList<T> {//implements ListTAD{
     /**
      * Método para remover o primeiro elemento do Nodo
      */
+    @Override
     public boolean removerInicio(){
         //verificamos se o primeiro é igual ao ultimo
         if(primeiro == ultimo){
@@ -377,6 +394,10 @@ public class LinkedList<T> {//implements ListTAD{
             return true;
         }
     }
+    /**
+     * Método para remover o ultimo elemento
+     */
+    @Override
     public boolean removerFim(){
         //criamos um Nodo auxiliar para andar pela lista
         Nodo auxiliar = primeiro;
