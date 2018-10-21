@@ -1,7 +1,7 @@
 /**
  * Classe de Teste da Classe Filas
  */
-public class App{
+public class AppFila{
     public static void main(String[] args){
         Filas fila = new Filas<>();
 
