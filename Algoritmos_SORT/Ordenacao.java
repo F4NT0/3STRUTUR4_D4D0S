@@ -160,10 +160,11 @@ public class Ordenacao implements InterfaceOrdenacao{
                 //o valor do primeiro maior é atualizado
                 primeiroMaior = primeiroMaior+1;
             }
-            //chamamos o método de troca de novo
-            troca(vetor,maiorAtual,primeiroMaior);
-            //retorna o valor do primeiroMaior
-            return primeiroMaior;
+        }
+        //chamamos o método de troca de novo
+        troca(vetor,maiorAtual,primeiroMaior);
+        //retorna o valor do primeiroMaior
+        return primeiroMaior;
     }
 
 
