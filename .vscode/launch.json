@@ -2,6 +2,16 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - AppOrdenacao",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "AppOrdenacao",
+            "args": ""
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - AppPilha",
             "request": "launch",
             "cwd": "${workspaceFolder}",
