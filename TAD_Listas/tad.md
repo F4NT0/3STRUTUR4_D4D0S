@@ -1,7 +1,6 @@
 # TIPOS ABSTRATOS DE DADOS(TAD)
 
-* É um modelo matemático que especifica:
-    * O tipo dos dados armazenados
-    * As operações definidas sobre esses dados
-    * Os tipos dos parâmetros dessas operações
-    
+Para podermos entender o que é um Tipo abstrato de dados, devemos entender as seguintes definições:
+    * Abstração
+    * Encapsulamento
+    * Modularidade
