@@ -10,9 +10,12 @@ import com.sun.org.apache.xerces.internal.impl.dv.xs.IntegerDV;
  * 
  */
 public class Calc_Pilha{
-    Pilha_Ex pilha = new Pilha_Ex<Double>();
+    //variaveis
+    Pilha_Ex<Double> pilha;
     //método construtor
-    public Calc_Pilha(){}
+    public Calc_Pilha(Pilha_Ex<Double> pilha){
+        this.pilha = pilha;
+    }
 
 
     /**
