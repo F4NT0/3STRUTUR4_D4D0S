@@ -8,32 +8,36 @@ public class App_Ex_Pilha{
     public static void main(String[] args){
 
         //Iniciando a Classe De Pilha
-        Pilha_Ex pilha = new Pilha_Ex<Integer>();
+        Pilha_Ex pilha = new Pilha_Ex<Double>();
         Calc_Pilha calc = new Calc_Pilha();
 
-        Scanner in = new Scanner(system.in);
+        Scanner in = new Scanner(System.in);
         boolean sistema = true;
-        System.out.println("Entrada: ");
-        String entrada = in.next();
-        if(calc.number(entrada){
-            pilha.push(entrada);
-        }
-        if(entrada.hasNext()){
-            switch(entrada){
-                case "*": calc.mult();
+        while(sistema){
+            System.out.println("Entrada: ");
+            String entrada = in.nextLine();
+            if(calc.number(entrada)){
+                Double valor = Double.parseDouble(entrada);
+                pilha.push(valor);
+            }else{
+                char operador = entrada.charAt(0);
+                switch(operador){
+                    case '*': calc.mult();
                           break;
-                case "/": calc.div();
+                    case '/': calc.div();
                           break;
-                case "-": calc.sub();
+                    case '-': calc.sub();
                           break;
-                case "+": calc.sum();
+                    case '+': calc.sum();
                           break;
-                case "=": calc.igual();
+                    case '=': calc.igual();
                           sistema = false;
                           break;
-                default: System.out.println("Este não é um operador Válido!");
-                        
+                    default: System.out.println("Este não é um operador Válido!");
+                }
             }
-        }
+            sistema = true;
+        }     
+        
     }
 }
