@@ -10,47 +10,75 @@ import com.sun.org.apache.xerces.internal.impl.dv.xs.IntegerDV;
  * 
  */
 public class Calc_Pilha{
-    Pilha_Ex pilha = new Pilha_Ex<Integer>();
+    Pilha_Ex pilha = new Pilha_Ex<Double>();
     //método construtor
     public Calc_Pilha(){}
 
 
     /**
      * Método para calcular uma multiplicação usando pilha
+     * O valor é armazenado de volta na pilha
      */
-    public int mult(){
-        int valor1 = pilha.pop();
-        int valor2 = pilha.pop();
-        int mult = valor1 * valor2;
+    public void mult(){
+        double valor1 = pilha.pop();
+        double valor2 = pilha.pop();
+        double mult = valor1 * valor2;
         pilha.push(mult);
-        return mult;
     }
 
     /**
-     * Método para calcular uma soma de valores
+     * Método para calcular uma soma de valores usando pilha
+     * O valor é armazenado de volta na pilha
      */
-    public int sum(){
+    public void sum(){
+        double valor1 = pilha.pop();
+        double valor2 = pilha.pop();
+        double sum = valor1 + valor2;
+        pilha.push(sum);
     }
 
     /**
-     * Método para calcular um subtração de valores
+     * Método para calcular um subtração de valores usando pilha
+     * o segundo valor retirado é o primeiro operando
+     * o primeiro valor retirado é o segundo operando
      */
-    public int sub(int valor1,int valor2){return valor1-valor2;}
+    public void sub(){
+        double valor1 = pilha.pop();
+        double valor2 = pilha.pop();
+        double sub = valor2 - valor1;
+        pilha.push(sub);
+    }
 
     /**
      * Método para calcular uma divisão de valores
      */
-    public int div(int valor1,int valor2){return valor1/valor2;}
+    public void div(){
+        double valor1 = pilha.pop();
+        double valor2 = pilha.pop();
+        if(valor1 < valor2){
+            double div = valor2/valor1; 
+        }
+        pilha.push(div);
+    }
 
     /**
-     * Método para pegar um valor do topo da pilha
+     * Método de igualdade para retornar o valor final que está na pilha
      */
-    public int pegarTopo(){return pilha.topo();}
+    public double igual(){
+        return pilha.topo();
+    }
 
     /**
-     * Método para selecionar qual operador será escolhido
+     * Método para verificar se a entrada é um número
      */
-
-
-
+    public boolean number(String s){
+        //try-catch caso não for um número
+        try{
+            Double valor = Double.parseDouble(s); 
+        }
+        catch(NumberFormatException e){
+            return false;
+        }
+        return true;
+    }
 }

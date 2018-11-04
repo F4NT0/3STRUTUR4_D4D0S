@@ -2,6 +2,16 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - App_Ex_Pilha",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "App_Ex_Pilha",
+            "args": ""
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - AppOrdenacao",
             "request": "launch",
             "cwd": "${workspaceFolder}",
