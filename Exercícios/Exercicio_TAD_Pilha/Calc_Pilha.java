@@ -7,7 +7,7 @@ import com.sun.org.apache.xerces.internal.impl.dv.xs.IntegerDV;
  * estes Simbolos devem fazer com que peguem dois valores da pilha e os calcule
  * Todo número entrado deve ser armazenado dentro da pilha, um por um
  * os dois valores no topo da lista devem ser tirados quando um dos simbolos acima são chamados
- * 
+ * @author Gabriel Fanto Stundner, Marcius Moraes e Pedro Vieira
  */
 public class Calc_Pilha{
     //variaveis

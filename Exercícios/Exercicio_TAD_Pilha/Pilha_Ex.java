@@ -1,3 +1,7 @@
+/**
+ * Classe da Implementação da Pilha
+ * @author Gabriel Fanto Stundner, Marcius Moraes e Pedro Vieira
+ */
 public class Pilha_Ex<T> implements Interface_Pilha<T>{
     Nodo primeiro,ultimo;
     int totalElementos;

@@ -4,6 +4,7 @@ import java.util.Scanner;
  * Classe Teste para a Calculadora
  * coloca um numero,um operador e outro numero, um por um
  * quando colocar o simbolo de igual(=) ele devolve o resultado
+ * @author Gabriel Fanto Stundner, Marcius Moraes e Pedro Vieira
  */
 public class App_Ex_Pilha{
     public static void main(String[] args){
