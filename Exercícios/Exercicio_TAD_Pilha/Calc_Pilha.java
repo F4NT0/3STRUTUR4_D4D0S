@@ -88,10 +88,10 @@ public class Calc_Pilha{
      * Método de Print para info do programa
      */
     public void imprime(){
-        System.out.println("Informação: ");
-        System.out.println("Números serão adicionados na Pilha");
-        System.out.println("Operadores farão os Calculos e será armazenado na Pilha");
-        System.out.println("Operadores Válidos: \n* : Multiplicação \n/: Divisão \n+: Adição \n-: Subtração");
+        System.out.println("Informa\u00c7\u00e3o: ");
+        System.out.println("N\u00fameros ser\u00e3o adicionados na Pilha");
+        System.out.println("Operadores far\u00e3o os C\u00e1lculos e ser\u00e1 armazenado na Pilha");
+        System.out.println("Operadores V\u00e1lidos: \n* : Multiplica\u00c7\u00e3o \n/: Divis\u00e3o \n+: Adi\u00c7\u00e3o \n-: Subtra\u00c7\u00e3o");
         System.out.println("Para ver os resultados, selecione o =");
     }
 }

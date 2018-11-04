@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 /**
  * Classe Teste para a Calculadora
@@ -14,7 +15,7 @@ public class App_Ex_Pilha{
 
         Scanner in = new Scanner(System.in);
         boolean sistema = false;
-
+       
         System.out.println("--------------------------------");
         System.out.println("BEM VINDO A CALCULADORA DE PILHA");
         System.out.println("--------------------------------");
@@ -32,25 +33,25 @@ public class App_Ex_Pilha{
                 switch(operador){
                     case '*': 
                     calc.mult();
-                    System.out.println("Multiplicação Foi Realizada!");
+                    System.out.println("Multiplica\u00c7\u00e3o Foi Realizada!");
                           break;
                     case '/': 
                     calc.div();
-                    System.out.println("Divisão Foi Realizada!");
+                    System.out.println("Divis\u00e3o Foi Realizada!");
                             break;
                     case '-': 
                     calc.sub();
-                    System.out.println("Subtração Foi Realizada!");
+                    System.out.println("Subtra\u00c7\u00e3o Foi Realizada!");
                         break;
                     case '+': 
                     calc.sum();
-                    System.out.println("Adição Foi Realizada!");
+                    System.out.println("Adi\u00c7\u00e3o Foi Realizada!");
                           break;
                     case '=': 
-                    System.out.println("O resultado é " + calc.igual());
+                    System.out.println("O resultado \u00e9 " + calc.igual());
                           sistema = true;
                           break;
-                    default: System.out.println("Este não é um operador Válido!");
+                    default: System.out.println("Este n\u00e3o \u00e9 um operador V\u00e1lido!");
                 }
             }
         }     
