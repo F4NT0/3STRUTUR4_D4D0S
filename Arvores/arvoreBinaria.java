@@ -110,9 +110,24 @@
       *       2) Percorre sub-árvores da Esquerda
       *       3) Percorre sub-árvores da Direita 
       */
-      public LinkedList<T> preFixado(){
-          return vetor;//TODO: fazer implementação deste método  
+      public LinkedList<T> prefixado(){
+          //criando uma lista para armazenar
+          LinkedList<T> lista = new LinkedList<T>();
+          Nodo<T> raiz = referenciaRaiz;
+          preFixado(raiz,lista);
+          return lista;
       }
+      public void preFixado(Nodo<T> raiz,LinkedList<T> lista){
+        
+            if(raiz != null){
+                //adicionamos primeiro a raiz na lista
+                lista.adicionar(raiz.getElemento());
+                //andamos pelas sub-arvores da esquerda de forma recursiva
+                preFixado(raiz.getEsquerda(), lista);
+                //andamos depois pelas sub-arvores da direita de forma recursiva
+                preFixado(raiz.getDireita(), lista);
+            }
+        }
 
       /**
        * Método de Caminhamento Pós-Fixado
@@ -123,7 +138,17 @@
        *     3) Visita a Raiz
        */
       public LinkedList<T> posFixado(){
-        return vetor;//TODO: fazer implementação deste método
+        LinkedList<T> lista = new LinkedList<T>();
+          Nodo<T> raiz = referenciaRaiz;
+          preFixado(raiz,lista);
+          return lista;
+      }
+      public void posFixado(Nodo<T> raiz, LinkedList<T> lista){
+            if(raiz != null){
+                preFixado(raiz.nodoEsquerda, lista);
+                preFixado(raiz.nodoDireita, lista);
+                lista.adicionar(raiz.getElemento());
+            }
       }
 
       /**
@@ -135,7 +160,17 @@
        *        3) Percorre as Sub-árvores da Direita
        */
       public LinkedList<T> central(){
-        return vetor;//TODO: fazer implementação deste método
+        LinkedList<T> lista = new LinkedList<T>();
+        Nodo<T> raiz = referenciaRaiz;
+        preFixado(raiz,lista);
+        return lista;
+      }
+      public void central(Nodo<T> raiz, LinkedList<T> lista){
+          if(raiz != null){
+              preFixado(raiz.getEsquerda(), lista);
+              lista.addInicio(raiz.getElemento());
+              preFixado(raiz.getDireita(), lista);
+          }
       }
 
       /**
