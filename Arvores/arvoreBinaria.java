@@ -100,7 +100,7 @@
 
      //Métodos para se usar em Árvores
 
-     //MÉTODOS DE CAMINHAMENTO PELA ÁRVORE
+     //MÉTODOS DE CAMINHAMENTO PELA ÁRVORE(Entregando uma LinkedList)
 
      /**
       * Método de Caminhamento Pré-Fixado
@@ -110,7 +110,7 @@
       *       2) Percorre sub-árvores da Esquerda
       *       3) Percorre sub-árvores da Direita 
       */
-      public T[] preFixado(){
+      public LinkedList<T> preFixado(){
           return vetor;//TODO: fazer implementação deste método  
       }
 
@@ -122,7 +122,7 @@
        *     2) Percorre a Sub-árvores da Direita
        *     3) Visita a Raiz
        */
-      public T[] posFixado(){
+      public LinkedList<T> posFixado(){
         return vetor;//TODO: fazer implementação deste método
       }
 
@@ -134,7 +134,7 @@
        *        2) Visita a Raiz
        *        3) Percorre as Sub-árvores da Direita
        */
-      public T[] central(){
+      public LinkedList<T> central(){
         return vetor;//TODO: fazer implementação deste método
       }
 
@@ -142,8 +142,35 @@
        * Método de Caminhamento de Largura
        * Visita os Nodos pelos Niveis da Árvore, da esquerda para a direita
        */
-      public T[] largura(){
-        return vetor;//TODO: fazer implementação deste método
+      public LinkedList<T> largura(){
+        //Criado uma Fila, para ir controlando quais elementos ja foram usados
+        Filas<T> filaAuxiliar = new Filas<T>();
+        //Iniciado uma LinkedList para armazenar o resultado final do caminhamento
+        LinkedList<T> lista = new LinkedList();
+        //Criado um Nodo atual, para controlar de qual elemento estamos trabalhando
+        Nodo<T> atual = null;
+
+        if(referenciaRaiz != null){ //enquanto a referencia a raiz não for nula
+            //adicionamos o elemento da raiz dentro da fila, para iniciar o while
+            filaAuxiliar.inserir(referenciaRaiz.getElemento());
+
+            while(!fila.estaVazio()){
+                //adicionamos o elemento da raiz dentro do Nodo atual
+                atual = new Nodo<T>(fila.retirar());
+                //verificamos se o elemento a esquerda do Nodo atual é diferente de nulo
+                if(atual.getEsquerda() != null){
+                    //se for diferente de nulo, adicionamos o elemento do Nodo a esquerda na fila
+                    fila.inserir(atual.getEsquerda().getElemento());
+                }
+                if(atual.getDireita() != null){
+                    fila.inserir(atual.getDireita().getElemento());
+                }
+                //após verificar e adicionar na fila, adicionamos o elemento do Nodo atual na lista que estamos construindo
+                lista.adicionar(atual.getElemento());
+            }
+            return lista;
+
+        }
       }
 
 
