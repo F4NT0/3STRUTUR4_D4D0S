@@ -52,9 +52,9 @@
       * @param vetor
       */
      public arvoreBinaria(T[] vetor){
-         //é criado uma Fila que vai indo armazenando os elementos em Nodos da Árvore
-         Filas<T> fila = new Fila<T>();
-         //criando um novo Nodo para armazenar o elemento da Fila
+         //é criado uma filaAuxiliar que vai indo armazenando os elementos em Nodos da Árvore
+         Filas<T> filaAuxiliar = new filaAuxiliar<T>();
+         //criando um novo Nodo para armazenar o elemento da filaAuxiliar
          Nodo<T> novo = null; //Inicializado em null, porque devemos retirar os elementos do vetor
          //criando um Nodo onde vai ficar armazenado quem é o primeiro Nodo
          Nodo<T> primeiroNodo = null; //inicializado como null porque devemos definir quem ele é depois
@@ -67,8 +67,8 @@
              novo = new Nodo<T>(vetor[0]);
              //colocamos o novo Nodo como referencia a  raiz, por ser o Nodo onde esta a raiz
              referenciaRaiz = novo;
-             //adicionamos o valor do Nodo raiz na Fila
-             fila.inserir(referenciaRaiz.getElemento());
+             //adicionamos o valor do Nodo raiz na filaAuxiliar
+             filaAuxiliar.inserir(referenciaRaiz.getElemento());
              //agora definimos a posição do posição como esquerda
              posicao = NodoPosicao.Esquerda;
 
@@ -76,8 +76,8 @@
              for(int i = 1 ; i < vetor.length ; i++){
                  //atualizamos o novo Nodo toda vez que pegamos um valor do vetor
                  novo = new Nodo<T>(vetor[i]);
-                 fila.inserir(novo.getElemento());//adicionamos os elementos na Fila
-                 primeiroNodo = new Nodo<T>(fila.pegar(0));//criamos o Nodo primeiro, onde fica armazenado o primeiro elemento da árvore
+                 filaAuxiliar.inserir(novo.getElemento());//adicionamos os elementos na filaAuxiliar
+                 primeiroNodo = new Nodo<T>(filaAuxiliar.pegar(0));//criamos o Nodo primeiro, onde fica armazenado o primeiro elemento da árvore
                  novo.setPai(primeiro);//definimos o primeiro elemento da árvore como o pai do novo Nodo
 
                  //utilizamos agora a posição que definimos antes(esquerda) para dizer para onde vai o novo Nodo
@@ -87,7 +87,7 @@
                  }else{
                      //se a posicao estiver como Direita, ele irá add o novo Nodo na direita do Primeiro Nodo
                      primeiroNodo.setDireita(novo); 
-                     fila.retirar(); // é retirado da Fila o elemento que iniciou a construção da arvore
+                     filaAuxiliar.retirar(); // é retirado da filaAuxiliar o elemento que iniciou a construção da arvore
                      posicao = NodoPosicao.Esquerda; //definimos a posicao como esquerda, para quando iniciar, o Nodo irá ser adicionado a esquerda e depois direita
                  }
 
@@ -178,7 +178,7 @@
        * Visita os Nodos pelos Niveis da Árvore, da esquerda para a direita
        */
       public LinkedList<T> largura(){
-        //Criado uma Fila, para ir controlando quais elementos ja foram usados
+        //Criado uma filaAuxiliar, para ir controlando quais elementos ja foram usados
         Filas<T> filaAuxiliar = new Filas<T>();
         //Iniciado uma LinkedList para armazenar o resultado final do caminhamento
         LinkedList<T> lista = new LinkedList();
@@ -186,21 +186,21 @@
         Nodo<T> atual = null;
 
         if(referenciaRaiz != null){ //enquanto a referencia a raiz não for nula
-            //adicionamos o elemento da raiz dentro da fila, para iniciar o while
+            //adicionamos o elemento da raiz dentro da filaAuxiliar, para iniciar o while
             filaAuxiliar.inserir(referenciaRaiz.getElemento());
 
-            while(!fila.estaVazio()){
+            while(!filaAuxiliar.estaVazio()){
                 //adicionamos o elemento da raiz dentro do Nodo atual
-                atual = new Nodo<T>(fila.retirar());
+                atual = new Nodo<T>(filaAuxiliar.retirar());
                 //verificamos se o elemento a esquerda do Nodo atual é diferente de nulo
                 if(atual.getEsquerda() != null){
-                    //se for diferente de nulo, adicionamos o elemento do Nodo a esquerda na fila
-                    fila.inserir(atual.getEsquerda().getElemento());
+                    //se for diferente de nulo, adicionamos o elemento do Nodo a esquerda na filaAuxiliar
+                    filaAuxiliar.inserir(atual.getEsquerda().getElemento());
                 }
                 if(atual.getDireita() != null){
-                    fila.inserir(atual.getDireita().getElemento());
+                    filaAuxiliar.inserir(atual.getDireita().getElemento());
                 }
-                //após verificar e adicionar na fila, adicionamos o elemento do Nodo atual na lista que estamos construindo
+                //após verificar e adicionar na filaAuxiliar, adicionamos o elemento do Nodo atual na lista que estamos construindo
                 lista.adicionar(atual.getElemento());
             }
             return lista;
@@ -209,8 +209,33 @@
       }
 
 
-     //public T getElemEsquerda(T elemento){
+     //Métodos Da classe arvoreBinaria
 
-     //}
+     /**
+      * Método de Busca de referência por um elemento de parametro
+      */
+      private Nodo getReferenciaNodo(T elemento){
+          Nodo raiz = referenciaRaiz;
+          Nodo auxiliar = null;
+          if(raiz.getElemento().equals(elemento)){
+              return raiz;
+          }else{
+              LinkedList<T> caminhamento = raiz.largura();
+              auxiliar = raiz.getEsquerda();
+              for(int i = 0 ; i < caminhamento.tamanho() ; i++){
+                  if(auxiliar.getElemento().equals(caminhamento.getElemento())){
+                      return auxiliar;
+                  }else if (auxiliar.getEsquerda() !=null){
+                  auxiliar = auxiliar.getEsquerda();
+                  }else if(auxiliar.getDireita() != null){
+                      auxiliar = auxiliar.getDireita();
+                  }else{
+
+                  }
+              
+              } 
+              }
+          }
+      }
 
  }
