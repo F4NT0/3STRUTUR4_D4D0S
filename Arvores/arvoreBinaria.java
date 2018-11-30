@@ -1,7 +1,7 @@
 /**
  * Classe de uma Árvore Binária
  */
- public class arvoreBinaria<T>{
+ public class arvoreBinaria<T> extends ArvoreBinariaTAD<T>{
      //Variáveis
      private Nodo<T> referenciaRaiz; //Nodo onde vai ficar armazenado qual é a Raiz
     
