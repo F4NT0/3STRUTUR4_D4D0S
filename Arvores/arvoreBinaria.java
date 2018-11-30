@@ -53,7 +53,7 @@
       */
      public arvoreBinaria(T[] vetor){
          //é criado uma filaAuxiliar que vai indo armazenando os elementos em Nodos da Árvore
-         Filas<T> filaAuxiliar = new filaAuxiliar<T>();
+         Filas<T> filaAuxiliar = new Filas<T>();
          //criando um novo Nodo para armazenar o elemento da filaAuxiliar
          Nodo<T> novo = null; //Inicializado em null, porque devemos retirar os elementos do vetor
          //criando um Nodo onde vai ficar armazenado quem é o primeiro Nodo
@@ -78,7 +78,7 @@
                  novo = new Nodo<T>(vetor[i]);
                  filaAuxiliar.inserir(novo.getElemento());//adicionamos os elementos na filaAuxiliar
                  primeiroNodo = new Nodo<T>(filaAuxiliar.pegar(0));//criamos o Nodo primeiro, onde fica armazenado o primeiro elemento da árvore
-                 novo.setPai(primeiro);//definimos o primeiro elemento da árvore como o pai do novo Nodo
+                 novo.setPai(primeiroNodo);//definimos o primeiro elemento da árvore como o pai do novo Nodo
 
                  //utilizamos agora a posição que definimos antes(esquerda) para dizer para onde vai o novo Nodo
                  if(posicao.equals(NodoPosicao.Esquerda)){
@@ -237,5 +237,3 @@
               }
           }
       }
-
- }

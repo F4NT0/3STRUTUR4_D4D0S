@@ -1,6 +1,6 @@
-public interface ArvoreBinariaTAD<T extends Comparable<T>>{
-    void setRoot(T elemento);
-    void add(T elemmento);
+public interface ArvoreBinariaTAD<T> extends Comparable<T>{
+    void definirRaiz(T elemento);
+    void inserir(T elemmento);
     boolean remove(T elemento);
     boolean removeGalho(T elemento);
     T pegarEsquerda(T elemento);
