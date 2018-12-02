@@ -1,7 +1,9 @@
+import com.sun.org.apache.xalan.internal.xsltc.dom.NodeCounter;
+
 /**
  * Classe de uma Árvore Binária
  */
- public class arvoreBinaria<T> extends ArvoreBinariaTAD<T>{
+ public class ArvoreBinaria<T> implements ArvoreBinariaTAD<T>{
      //Variáveis
      private Nodo<T> referenciaRaiz; //Nodo onde vai ficar armazenado qual é a Raiz
     
@@ -34,7 +36,7 @@
          //Métodos do Nodo
 
          //Getters
-         public T getElemento(){return elemento;}
+         public T pegarElemento(){return elemento;}
          public Nodo getEsquerda(){return nodoEsquerda;}
          public Nodo getDireita(){return nodoDireita;}
          public Nodo getPai(){return pai;}
@@ -51,7 +53,7 @@
       * Método Construtor da Árvore, onde temos um vetor como Parâmetro
       * @param vetor
       */
-     public arvoreBinaria(T[] vetor){
+     public ArvoreBinaria(T[] vetor){
          //é criado uma filaAuxiliar que vai indo armazenando os elementos em Nodos da Árvore
          Filas<T> filaAuxiliar = new Filas<T>();
          //criando um novo Nodo para armazenar o elemento da filaAuxiliar
@@ -68,7 +70,7 @@
              //colocamos o novo Nodo como referencia a  raiz, por ser o Nodo onde esta a raiz
              referenciaRaiz = novo;
              //adicionamos o valor do Nodo raiz na filaAuxiliar
-             filaAuxiliar.inserir(referenciaRaiz.getElemento());
+             filaAuxiliar.inserir(referenciaRaiz.pegarElemento());
              //agora definimos a posição do posição como esquerda
              posicao = NodoPosicao.Esquerda;
 
@@ -76,7 +78,7 @@
              for(int i = 1 ; i < vetor.length ; i++){
                  //atualizamos o novo Nodo toda vez que pegamos um valor do vetor
                  novo = new Nodo<T>(vetor[i]);
-                 filaAuxiliar.inserir(novo.getElemento());//adicionamos os elementos na filaAuxiliar
+                 filaAuxiliar.inserir(novo.pegarElemento());//adicionamos os elementos na filaAuxiliar
                  primeiroNodo = new Nodo<T>(filaAuxiliar.pegar(0));//criamos o Nodo primeiro, onde fica armazenado o primeiro elemento da árvore
                  novo.setPai(primeiroNodo);//definimos o primeiro elemento da árvore como o pai do novo Nodo
 
@@ -121,7 +123,7 @@
         
             if(raiz != null){
                 //adicionamos primeiro a raiz na lista
-                lista.adicionar(raiz.getElemento());
+                lista.adicionar(raiz.pegarElemento());
                 //andamos pelas sub-arvores da esquerda de forma recursiva
                 preFixado(raiz.getEsquerda(), lista);
                 //andamos depois pelas sub-arvores da direita de forma recursiva
@@ -147,7 +149,7 @@
             if(raiz != null){
                 preFixado(raiz.nodoEsquerda, lista);
                 preFixado(raiz.nodoDireita, lista);
-                lista.adicionar(raiz.getElemento());
+                lista.adicionar(raiz.pegarElemento());
             }
       }
 
@@ -168,7 +170,7 @@
       public void central(Nodo<T> raiz, LinkedList<T> lista){
           if(raiz != null){
               preFixado(raiz.getEsquerda(), lista);
-              lista.addInicio(raiz.getElemento());
+              lista.addInicio(raiz.pegarElemento());
               preFixado(raiz.getDireita(), lista);
           }
       }
@@ -187,25 +189,32 @@
 
         if(referenciaRaiz != null){ //enquanto a referencia a raiz não for nula
             //adicionamos o elemento da raiz dentro da filaAuxiliar, para iniciar o while
-            filaAuxiliar.inserir(referenciaRaiz.getElemento());
+            T elementoRaiz = referenciaRaiz.pegarElemento();
+            filaAuxiliar.inserir(elementoRaiz);
 
             while(!filaAuxiliar.estaVazio()){
                 //adicionamos o elemento da raiz dentro do Nodo atual
                 atual = new Nodo<T>(filaAuxiliar.retirar());
+                T elementoLados;
                 //verificamos se o elemento a esquerda do Nodo atual é diferente de nulo
                 if(atual.getEsquerda() != null){
                     //se for diferente de nulo, adicionamos o elemento do Nodo a esquerda na filaAuxiliar
-                    filaAuxiliar.inserir(atual.getEsquerda().getElemento());
+                    elementoLados = atual.pegarElemento();
+                    filaAuxiliar.inserir(elementoLados);
+
                 }
                 if(atual.getDireita() != null){
-                    filaAuxiliar.inserir(atual.getDireita().getElemento());
+                    elementoLados = atual.pegarElemento();
+                    filaAuxiliar.inserir(elementoLados);
                 }
                 //após verificar e adicionar na filaAuxiliar, adicionamos o elemento do Nodo atual na lista que estamos construindo
-                lista.adicionar(atual.getElemento());
+                elementoLados = atual.pegarElemento();
+                lista.adicionar(elementoLados);
             }
-            return lista;
+            
 
         }
+        return lista;
       }
 
 
@@ -217,13 +226,13 @@
       private Nodo getReferenciaNodo(T elemento){
           Nodo raiz = referenciaRaiz;
           Nodo auxiliar = null;
-          if(raiz.getElemento().equals(elemento)){
+          if(raiz.pegarElemento().equals(elemento)){
               return raiz;
           }else{
               LinkedList<T> caminhamento = raiz.largura();
               auxiliar = raiz.getEsquerda();
               for(int i = 0 ; i < caminhamento.tamanho() ; i++){
-                  if(auxiliar.getElemento().equals(caminhamento.getElemento())){
+                  if(auxiliar.pegarElemento().equals(caminhamento.pegarElemento())){
                       return auxiliar;
                   }else if (auxiliar.getEsquerda() !=null){
                   auxiliar = auxiliar.getEsquerda();
