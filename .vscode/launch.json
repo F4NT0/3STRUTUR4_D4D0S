@@ -2,6 +2,26 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - AppArvoreBinaria",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "AppArvoreBinaria",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch) - AppArvoreBinaria",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "",
+            "args": ""
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - App_Ex_Pilha",
             "request": "launch",
             "cwd": "${workspaceFolder}",
